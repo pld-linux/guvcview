@@ -1,12 +1,12 @@
 Summary:	GTK+ base UVC Viewer
 #Summary(pl.UTF-8):	-
 Name:		guvcview
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	http://download.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
-# Source0-md5:	a8c9b1f1267fbf9982266b5f36d87b2b
+# Source0-md5:	b3dfd04d8aae0c807d5f5d6ba035580f
 URL:		http://guvcview.sourceforge.net/
 BuildRequires:	ffmpeg-devel
 BuildRequires:	glib2-devel >= 1:2.10.0
