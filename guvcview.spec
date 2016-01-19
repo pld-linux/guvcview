@@ -8,9 +8,11 @@ Group:		Applications/Multimedia
 Source0:	http://download.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
 # Source0-md5:	d88a1bcf80c0d989ffcb19d71bdd8c1e
 URL:		http://guvcview.sourceforge.net/
+BuildRequires:	SDL2-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	glib2-devel >= 1:2.10.0
-BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gsl-devel
+BuildRequires:	gtk+3-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libv4l-devel
 BuildRequires:	portaudio-devel
