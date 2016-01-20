@@ -1,0 +1,11 @@
+--- guvcview-src-2.0.2/configure.ac.orig	2016-01-19 21:11:21.880441118 +0100
++++ guvcview-src-2.0.2/configure.ac	2016-01-19 21:12:44.860508243 +0100
+@@ -125,7 +125,7 @@ dnl ------------------------------------
+ dnl check for libgviewv4l2core dependencies
+ dnl --------------------------------------------------------------------------
+ 
+-PKG_CHECK_MODULES(GVIEWV4L2CORE, [libv4l2 libudev libusb-1.0 libavcodec libpng])
++PKG_CHECK_MODULES(GVIEWV4L2CORE, [libv4l2 libudev libusb-1.0 libavutil libavcodec libpng])
+ AC_SUBST(GVIEWV4L2CORE_CFLAGS)
+ AC_SUBST(GVIEWV4L2CORE_LIBS)
+ 

@@ -8,6 +8,7 @@ Group:		Applications/Multimedia
 Source0:	http://download.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
 # Source0-md5:	d88a1bcf80c0d989ffcb19d71bdd8c1e
 URL:		http://guvcview.sourceforge.net/
+Patch0:		link.patch
 BuildRequires:	SDL2-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	glib2-devel >= 1:2.10.0
@@ -27,8 +28,11 @@ from devices supported by the Linux UVC driver.
 
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0 -p1
 
 %build
+%{__automake}
+%{__autoconf}
 %configure
 %{__make}
 
