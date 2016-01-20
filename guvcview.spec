@@ -5,7 +5,7 @@ Version:	2.0.2
 Release:	0.1
 License:	GPL v3
 Group:		Applications/Multimedia
-Source0:	http://download.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
 # Source0-md5:	d88a1bcf80c0d989ffcb19d71bdd8c1e
 URL:		http://guvcview.sourceforge.net/
 Patch0:		link.patch
