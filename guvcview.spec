@@ -10,6 +10,8 @@ Source0:	http://download.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
 URL:		http://guvcview.sourceforge.net/
 Patch0:		link.patch
 BuildRequires:	SDL2-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	ffmpeg-devel
 BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gsl-devel
