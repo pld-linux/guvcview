@@ -1,5 +1,4 @@
 Summary:	GTK+ base UVC Viewer
-#Summary(pl.UTF-8):	-
 Name:		guvcview
 Version:	2.0.2
 Release:	0.1
@@ -25,8 +24,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 guvcview is a simple GTK+ interface for capturing and viewing video
 from devices supported by the Linux UVC driver.
-
-#%description -l pl.UTF-8
 
 %prep
 %setup -q -n %{name}-src-%{version}
