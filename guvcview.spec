@@ -48,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO.tasks
+%doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/guvcview.desktop
 %{_pixmapsdir}/guvcview
