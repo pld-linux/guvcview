@@ -18,6 +18,7 @@ BuildRequires:	gtk+3-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libv4l-devel
 BuildRequires:	portaudio-devel
+BuildRequires:	pulseaudio-devel
 BuildRequires:	udev-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
