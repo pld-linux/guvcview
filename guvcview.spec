@@ -1,7 +1,7 @@
 Summary:	GTK+ base UVC Viewer
 Name:		guvcview
 Version:	2.0.2
-Release:	0.1
+Release:	0.2
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
@@ -50,6 +50,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/libgviewaudio-1.1.so.1.0.1
+%attr(755,root,root) %{_libdir}/libgviewencoder-1.1.so.1.0.1
+%attr(755,root,root) %{_libdir}/libgviewrender-1.1.so.1.0.1
+%attr(755,root,root) %{_libdir}/libgviewv4l2core-1.1.so.1.0.1
+%attr(755,root,root) %ghost %{_libdir}/libgviewaudio-1.1.so.1
+%attr(755,root,root) %ghost %{_libdir}/libgviewencoder-1.1.so.1
+%attr(755,root,root) %ghost %{_libdir}/libgviewrender-1.1.so.1
+%attr(755,root,root) %ghost %{_libdir}/libgviewv4l2core-1.1.so.1
 %{_desktopdir}/guvcview.desktop
 %{_pixmapsdir}/guvcview
 %{_mandir}/man1/guvcview.1*
