@@ -43,6 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name}
+%find_lang gview_v4l2core -a %{name}.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
