@@ -49,6 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{bg,fo}
 %{__rm} $RPM_BUILD_ROOT%{_localedir}/bs/LC_MESSAGES/gview_v4l2core.mo
 
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
+
 %find_lang %{name}
 %find_lang gview_v4l2core -a %{name}.lang
 
@@ -70,6 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libgviewencoder-1.1.so.1
 %attr(755,root,root) %ghost %{_libdir}/libgviewrender-1.1.so.1
 %attr(755,root,root) %ghost %{_libdir}/libgviewv4l2core-1.1.so.1
+%{_datadir}/appdata/guvcview.appdata.xml
 %{_desktopdir}/guvcview.desktop
 %{_pixmapsdir}/guvcview
 %{_mandir}/man1/guvcview.1*
