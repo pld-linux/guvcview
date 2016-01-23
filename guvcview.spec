@@ -42,6 +42,13 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{_includedir}/guvcview-2
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.{a,la,so}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/pkgconfig/*
+
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{bg,fo}
+%{__rm} $RPM_BUILD_ROOT%{_localedir}/bs/LC_MESSAGES/gview_v4l2core.mo
+
 %find_lang %{name}
 %find_lang gview_v4l2core -a %{name}.lang
 
