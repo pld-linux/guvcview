@@ -1,7 +1,7 @@
 Summary:	GTK+ base UVC Viewer
 Name:		guvcview
 Version:	2.0.2
-Release:	0.2
+Release:	1
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
