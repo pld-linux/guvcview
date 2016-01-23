@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{_includedir}/guvcview-2
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.{a,la,so}
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/pkgconfig/*
+%{__rm} $RPM_BUILD_ROOT%{_pkgconfigdir}/*
 
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{bg,fo}
 %{__rm} $RPM_BUILD_ROOT%{_localedir}/bs/LC_MESSAGES/gview_v4l2core.mo
