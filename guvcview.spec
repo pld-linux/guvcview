@@ -33,7 +33,8 @@ from devices supported by the Linux UVC driver.
 %build
 %{__automake}
 %{__autoconf}
-%configure
+%configure \
+	--disable-debian-menu
 %{__make}
 
 %install
