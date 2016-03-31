@@ -1,13 +1,14 @@
 Summary:	GTK+ base UVC Viewer
 Name:		guvcview
 Version:	2.0.2
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
 # Source0-md5:	d88a1bcf80c0d989ffcb19d71bdd8c1e
 URL:		http://guvcview.sourceforge.net/
 Patch0:		link.patch
+Patch1:		ffmpeg3.patch
 BuildRequires:	SDL2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,10 +30,12 @@ from devices supported by the Linux UVC driver.
 %prep
 %setup -q -n %{name}-src-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
-%{__automake}
+%{__aclocal}
 %{__autoconf}
+%{__automake}
 %configure \
 	--disable-debian-menu
 %{__make}
