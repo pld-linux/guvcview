@@ -11,6 +11,7 @@ License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
 # Source0-md5:	f4d238ccd26e126ae6e8e6bd4a052bfc
+Patch0:		ffmpeg4.patch
 URL:		http://guvcview.sourceforge.net/
 BuildRequires:	SDL2-devel >= 2.0
 BuildRequires:	autoconf >= 2.50
@@ -67,6 +68,7 @@ Statyczne biblioteki guvcview.
 
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0 -p1
 
 %build
 %{__libtoolize}
