@@ -5,18 +5,17 @@
 Summary:	GTK+ based UVC Viewer
 Summary(pl.UTF-8):	Przeglądarka UVC oparta na GTK+
 Name:		guvcview
-Version:	2.0.5
-Release:	2
+Version:	2.0.6
+Release:	1
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.gz
-# Source0-md5:	f4d238ccd26e126ae6e8e6bd4a052bfc
-Patch0:		ffmpeg4.patch
+# Source0-md5:	ea35acb3a97952ceca26d92478b6e7ea
 URL:		http://guvcview.sourceforge.net/
 BuildRequires:	SDL2-devel >= 2.0
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 3.0
 BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gsl-devel >= 1.15
 BuildRequires:	gtk+3-devel >= 3.0.0
@@ -29,6 +28,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	portaudio-devel >= 19
 BuildRequires:	pulseaudio-devel >= 0.9.15
 BuildRequires:	udev-devel
+Requires:	ffmpeg-libs >= 3.0
 Requires:	glib2 >= 1:2.10.0
 Requires:	gsl >= 1.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -68,7 +68,6 @@ Statyczne biblioteki guvcview.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p1
 
 %build
 %{__libtoolize}
