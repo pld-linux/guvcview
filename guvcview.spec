@@ -5,12 +5,12 @@
 Summary:	GTK+ based UVC Viewer
 Summary(pl.UTF-8):	Przeglądarka UVC oparta na GTK+
 Name:		guvcview
-Version:	2.0.8
-Release:	2
+Version:	2.1.0
+Release:	1
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	https://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.bz2
-# Source0-md5:	45c387500a258ace63e75ac4d4c001da
+# Source0-md5:	43593ab63c9fa7e31105d6552d926bf4
 URL:		http://guvcview.sourceforge.net/
 BuildRequires:	SDL2-devel >= 2.0
 BuildRequires:	autoconf >= 2.50
@@ -103,14 +103,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_bindir}/guvcview
-%attr(755,root,root) %{_libdir}/libgviewaudio-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewaudio-2.0.so.2
-%attr(755,root,root) %{_libdir}/libgviewencoder-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewencoder-2.1.so.2
-%attr(755,root,root) %{_libdir}/libgviewrender-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewrender-2.1.so.2
-%attr(755,root,root) %{_libdir}/libgviewv4l2core-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewv4l2core-2.1.so.2
+%attr(755,root,root) %{_libdir}/libgviewaudio-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewaudio-2.2.so.2
+%attr(755,root,root) %{_libdir}/libgviewencoder-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewencoder-2.2.so.2
+%attr(755,root,root) %{_libdir}/libgviewrender-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewrender-2.2.so.2
+%attr(755,root,root) %{_libdir}/libgviewv4l2core-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewv4l2core-2.2.so.2
 %{_datadir}/metainfo/guvcview.appdata.xml
 %{_desktopdir}/guvcview.desktop
 %{_pixmapsdir}/guvcview
