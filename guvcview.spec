@@ -2,6 +2,10 @@
 # - sfml rendering (BR: sfml-graphics >= 2.0) instead of SDL2
 # - Qt5 gui (BR: Qt5Widgets, qt5-build) instead of gtk+3
 # All can be compiled in, selectable at runtime.
+#
+# Conditional build:
+%bcond_without	static_libs	# static libraries
+
 Summary:	GTK+ based UVC Viewer
 Summary(pl.UTF-8):	Przeglądarka UVC oparta na GTK+
 Name:		guvcview
@@ -27,6 +31,7 @@ BuildRequires:	libv4l-devel
 BuildRequires:	pkgconfig
 BuildRequires:	portaudio-devel >= 19
 BuildRequires:	pulseaudio-devel >= 0.9.15
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	udev-devel
 Requires(post,postun):	desktop-file-utils
 Requires:	ffmpeg-libs >= 3.0
@@ -77,6 +82,7 @@ Statyczne biblioteki guvcview.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{__enable_disable static_libs static} \
 	--disable-debian-menu \
 	--disable-silent-rules
 %{__make}
@@ -134,9 +140,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libgviewrender.pc
 %{_pkgconfigdir}/libgviewv4l2core.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgviewaudio.a
 %{_libdir}/libgviewencoder.a
 %{_libdir}/libgviewrender.a
 %{_libdir}/libgviewv4l2core.a
+%endif
