@@ -28,6 +28,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	portaudio-devel >= 19
 BuildRequires:	pulseaudio-devel >= 0.9.15
 BuildRequires:	udev-devel
+Requires(post,postun):	desktop-file-utils
 Requires:	ffmpeg-libs >= 3.0
 Requires:	glib2 >= 1:2.10.0
 Requires:	gsl >= 1.15
@@ -96,8 +97,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
+%post
+/sbin/ldconfig
+%update_desktop_database_post
+
+%postun
+/sbin/ldconfig
+%update_desktop_database_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
