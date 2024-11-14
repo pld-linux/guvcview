@@ -1,37 +1,34 @@
 # NOTE: possible switches:
 # - sfml rendering (BR: sfml-graphics >= 2.0) instead of SDL2
-# - Qt5 gui (BR: Qt5Widgets, qt5-build) instead of gtk+3
+# - Qt6 gui (BR: Qt6Core Qt6Gui Qt6Widgets, qt5-build) instead of gtk+3
 # All can be compiled in, selectable at runtime.
-#
-# Conditional build:
-%bcond_without	static_libs	# static libraries
 
 Summary:	GTK+ based UVC Viewer
 Summary(pl.UTF-8):	Przeglądarka UVC oparta na GTK+
 Name:		guvcview
-Version:	2.1.0
-Release:	2
+Version:	2.2.1
+Release:	1
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	https://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.bz2
-# Source0-md5:	43593ab63c9fa7e31105d6552d926bf4
+# Source0-md5:	8dc549d6cf65b496bcd924ed3539142e
+Patch0:		link-math.patch
+Patch1:		pc-path.patch
 URL:		http://guvcview.sourceforge.net/
 BuildRequires:	SDL2-devel >= 2.0
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	cmake >= 3.14
 BuildRequires:	ffmpeg-devel >= 3.0
 BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gsl-devel >= 1.15
 BuildRequires:	gtk+3-devel >= 3.0.0
-BuildRequires:	intltool >= 0.40
 BuildRequires:	libpng-devel
-BuildRequires:	libtool
+BuildRequires:	libstdc++-devel >= 6:8
 BuildRequires:	libusb-devel >= 1.0
 BuildRequires:	libv4l-devel
 BuildRequires:	pkgconfig
 BuildRequires:	portaudio-devel >= 19
 BuildRequires:	pulseaudio-devel >= 0.9.15
-BuildRequires:	rpmbuild(macros) >= 1.527
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	udev-devel
 Requires(post,postun):	desktop-file-utils
 Requires:	ffmpeg-libs >= 3.0
@@ -53,6 +50,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek guvcview
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	udev-devel
+Obsoletes:	guvcview-static < 2.2.1
 
 %description devel
 Header files for guvcview libraries.
@@ -60,42 +58,21 @@ Header files for guvcview libraries.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe bibliotek guvcview.
 
-%package static
-Summary:	Static guvcview libraries
-Summary(pl.UTF-8):	Statyczne biblioteki guvcview
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static guvcview libraries.
-
-%description static -l pl.UTF-8
-Statyczne biblioteki guvcview.
-
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	%{__enable_disable static_libs static} \
-	--disable-debian-menu \
-	--disable-silent-rules
-%{__make}
+%cmake -B build \
+	-DINSTALL_DEVKIT:BOOL=ON
+%{__make} -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgview*.la
-
-%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %find_lang %{name}
 %find_lang gview_v4l2core -a %{name}.lang
@@ -115,17 +92,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_bindir}/guvcview
-%attr(755,root,root) %{_libdir}/libgviewaudio-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewaudio-2.2.so.2
-%attr(755,root,root) %{_libdir}/libgviewencoder-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewencoder-2.2.so.2
-%attr(755,root,root) %{_libdir}/libgviewrender-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewrender-2.2.so.2
-%attr(755,root,root) %{_libdir}/libgviewv4l2core-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgviewv4l2core-2.2.so.2
-%{_datadir}/metainfo/guvcview.appdata.xml
+%attr(755,root,root) %{_libdir}/libgviewaudio.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewaudio.so.2
+%attr(755,root,root) %{_libdir}/libgviewencoder.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewencoder.so.2
+%attr(755,root,root) %{_libdir}/libgviewrender.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewrender.so.2
+%attr(755,root,root) %{_libdir}/libgviewv4l2core.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgviewv4l2core.so.2
+%{_datadir}/appdata/guvcview.appdata.xml
 %{_desktopdir}/guvcview.desktop
-%{_pixmapsdir}/guvcview
+%{_pixmapsdir}/guvcview.png
 %{_mandir}/man1/guvcview.1*
 
 %files devel
@@ -134,17 +111,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgviewencoder.so
 %attr(755,root,root) %{_libdir}/libgviewrender.so
 %attr(755,root,root) %{_libdir}/libgviewv4l2core.so
-%{_includedir}/guvcview-2
+%{_includedir}/gviewaudio.h
+%{_includedir}/gviewencoder.h
+%{_includedir}/gviewrender.h
+%{_includedir}/gviewv4l2core.h
 %{_pkgconfigdir}/libgviewaudio.pc
 %{_pkgconfigdir}/libgviewencoder.pc
 %{_pkgconfigdir}/libgviewrender.pc
 %{_pkgconfigdir}/libgviewv4l2core.pc
-
-%if %{with static_libs}
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libgviewaudio.a
-%{_libdir}/libgviewencoder.a
-%{_libdir}/libgviewrender.a
-%{_libdir}/libgviewv4l2core.a
-%endif

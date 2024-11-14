@@ -1,0 +1,22 @@
+--- guvcview-src-2.2.1/gview_encoder/CMakeLists.txt.orig	2024-11-02 14:15:33.000000000 +0100
++++ guvcview-src-2.2.1/gview_encoder/CMakeLists.txt	2024-11-15 00:04:16.376946665 +0100
+@@ -24,7 +24,7 @@
+ 
+ pkg_check_modules(FFMPEG REQUIRED libavcodec libavutil)
+ 
+-target_link_libraries(gviewencoder ${FFMPEG_LIBRARIES})
++target_link_libraries(gviewencoder m ${FFMPEG_LIBRARIES})
+ add_definitions(${FFMPEG_CFLAGS} ${FFMPEG_CFLAGS_OTHER})
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/includes)
+--- guvcview-src-2.2.1/gview_v4l2core/CMakeLists.txt.orig	2024-11-02 14:15:33.000000000 +0100
++++ guvcview-src-2.2.1/gview_v4l2core/CMakeLists.txt	2024-11-15 00:07:05.502171037 +0100
+@@ -31,7 +31,7 @@
+ pkg_check_modules(V4L2 REQUIRED
+   libv4l2 libudev libusb-1.0 libavcodec>=57.16 libavutil libpng)
+ 
+-target_link_libraries(gviewv4l2core ${V4L2_LIBRARIES})
++target_link_libraries(gviewv4l2core m ${V4L2_LIBRARIES})
+ add_definitions(${V4L2_CFLAGS} ${V4L2_CFLAGS_OTHER})
+ 
+ add_compile_definitions(GETTEXT_PACKAGE_V4L2CORE="gview_v4l2core")

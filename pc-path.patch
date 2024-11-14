@@ -1,0 +1,44 @@
+--- guvcview-src-2.2.1/gview_audio/CMakeLists.txt.orig	2024-11-02 14:15:33.000000000 +0100
++++ guvcview-src-2.2.1/gview_audio/CMakeLists.txt	2024-11-15 00:20:20.336468471 +0100
+@@ -42,7 +42,7 @@
+   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gviewaudio.h TYPE INCLUDE)
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewaudio.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
+--- guvcview-src-2.2.1/gview_v4l2core/CMakeLists.txt.orig	2024-11-15 00:13:08.125288470 +0100
++++ guvcview-src-2.2.1/gview_v4l2core/CMakeLists.txt	2024-11-15 00:20:41.492540618 +0100
+@@ -44,7 +44,7 @@
+   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gviewv4l2core.h TYPE INCLUDE)
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewv4l2core.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
+--- guvcview-src-2.2.1/gview_encoder/CMakeLists.txt.orig	2024-11-15 00:13:08.125288470 +0100
++++ guvcview-src-2.2.1/gview_encoder/CMakeLists.txt	2024-11-15 00:21:46.050726577 +0100
+@@ -36,7 +36,7 @@
+ 
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewencoder.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
+--- guvcview-src-2.2.1/gview_render/CMakeLists.txt.orig	2024-11-02 14:15:33.000000000 +0100
++++ guvcview-src-2.2.1/gview_render/CMakeLists.txt	2024-11-15 00:22:07.070135990 +0100
+@@ -53,7 +53,7 @@
+ 
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewrender.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
