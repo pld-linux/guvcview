@@ -60,8 +60,8 @@ Pliki nagłówkowe bibliotek guvcview.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %cmake -B build \
