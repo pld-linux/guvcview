@@ -6,12 +6,12 @@
 Summary:	GTK+ based UVC Viewer
 Summary(pl.UTF-8):	Przeglądarka UVC oparta na GTK+
 Name:		guvcview
-Version:	2.2.1
+Version:	2.2.2
 Release:	1
 License:	GPL v3
 Group:		Applications/Multimedia
 Source0:	https://downloads.sourceforge.net/guvcview/%{name}-src-%{version}.tar.bz2
-# Source0-md5:	8dc549d6cf65b496bcd924ed3539142e
+# Source0-md5:	3eac7b9ffe9bf5d386f66045ac44cf3f
 Patch0:		link-math.patch
 Patch1:		pc-path.patch
 URL:		http://guvcview.sourceforge.net/
